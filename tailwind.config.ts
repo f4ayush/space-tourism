@@ -12,6 +12,12 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'home-image-desktop': "url('../assets/home/background-home-desktop.jpg')",
+        'footer-texture': "url('/img/footer-texture.png')",
+      },
+      fontFamily: {
+        'barlow-condensed': ['Barlow Condensed', 'sans-serif'],
+        'bellefair': ['Bellefair', 'serif'],
       },
     },
   },
