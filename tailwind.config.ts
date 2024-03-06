@@ -13,6 +13,8 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         'home-image-desktop': "url('../assets/home/background-home-desktop.jpg')",
+        'home-image-tablet': "url('../assets/home/background-home-tablet.jpg')",
+        'home-image-mobile': "url('../assets/home/background-home-mobile.jpg')",
         'footer-texture': "url('/img/footer-texture.png')",
       },
       fontFamily: {
