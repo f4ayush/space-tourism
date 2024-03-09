@@ -66,11 +66,11 @@ export default function Technology() {
 
   const technologyImage = (technologyDetail: dataListType) => {
     return (
-      <div className="w-full lg:w-auto m-4 flex justify-center">
+      <div className="w-full lg:w-1/2 m-4 flex justify-center">
         <picture className="w-full md:w-full">
         <source srcSet={technologyDetail.images.portrait}
             media="(min-width: 1024px)"/>
-        <Image src={technologyDetail.images.landscape} alt='technology image' width={150} height={150} className="object-contain w-full md:w-full lg:w-96" />
+        <Image src={technologyDetail.images.landscape} alt='technology image' width={150} height={150} className="object-contain w-full md:w-full lg:w-full" />
         </picture>
       </div>
     )
@@ -78,9 +78,9 @@ export default function Technology() {
 
   return (
     <main className="bg-technology-image-mobile md:bg-technology-image-tablet lg:bg-technology-image-desktop bg-cover min-h-screen py-16 lg:flex justify-center lg:items-center">
-      <div className={`${barlow_condensed.className} text-center mt-2`}>
-        <p className={`${barlow_condensed.className} uppercase md:text-left md:mt-8 text-md md:text-lg lg:text-[28px] tracking-widest md:ml-[5%] lg:ml-[0%]`}><span className="text-[#D0D6F9]">03</span> space launch 101</p>
-        <TabsContainer dataList={technologyDetails} renderElement={technologyElement} ImageContainer={technologyImage} type="circle" wrapperClasses="lg:flex-row-reverse " detailsClasses="lg:flex" buttonClasses="lg:flex-col lg:justify-center lg:mr-6"/>
+      <div className={`${barlow_condensed.className} text-center mt-2 lg:w-full`}>
+        <p className={`${barlow_condensed.className} uppercase md:text-left md:mt-8 text-md md:text-lg lg:text-[28px] tracking-widest md:ml-[5%] lg:ml-[10%]`}><span className="text-[#D0D6F9]">03</span> space launch 101</p>
+        <TabsContainer dataList={technologyDetails} renderElement={technologyElement} ImageContainer={technologyImage} type="circle" wrapperClasses="lg:flex-row-reverse " detailsClasses="lg:flex lg:w-full lg:place-content-center" buttonClasses="lg:flex-col lg:justify-center lg:mr-6"/>
       </div>
     </main>
   );
