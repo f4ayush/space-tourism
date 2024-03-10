@@ -1,4 +1,5 @@
 'use client'
+import Carousel from "@/components/Carousel";
 import TabsContainer from "@/components/TabsContainer";
 import { Barlow_Condensed, Bellefair, Barlow } from "next/font/google";
 import Image from "next/image";
@@ -58,37 +59,49 @@ const crewDetails = [
 interface dataListType {
   name: string;
   images: {
-      png: string;
-      webp: string;
+    png: string;
+    webp: string;
   };
   role: string;
   bio: string;
 }
 export default function Crew() {
-  const crewElement  = (crewDetail: dataListType) => {
+  const crewElement = (crewDetail: dataListType) => {
     return (
-      <div className="md:max-w-md lg:max-w-xl">
-        <h1 className={`${bellefair.className} uppercase text-5xl mt-4 py-4 lg:text-8xl`}>{crewDetail.name}</h1>
-        <p>{crewDetail.role}</p>
+      <div className="flex justify-between flex-col items-center p-2 h-full">
+        <p className="">{crewDetail.role}</p>
+        <h1 className={`${bellefair.className} uppercase text-5xl py-4 lg:text-8xl`}>{crewDetail.name}</h1>
         <p className={`${barlow.className} text-center text-sm text-[#D0D6F9] mb-8 lg:text-lg lg:text-justify`}>{crewDetail.bio}</p>
-        
       </div>
     )
   }
 
-  const crewImage = (crewDetail: dataListType)=>{
-    return (
-      <>
-        <Image src={crewDetail.images.png} alt='crew image' height={150} width={150} />
-      </>
-    )
-  }
 
   return (
-    <main className="bg-crew-image-mobile bg-cover min-h-screen py-16 px-10">
-      <div className="container text-center mt-2">
+    <main className="bg-crew-image-mobile lg:bg-crew-image-desktop md:bg-crew-image-tablet bg-cover min-h-screen py-16 px-10">
+      <div className="text-center mt-2 h-full">
         <p>02 Meet Your Crew</p>
-        <TabsContainer dataList={crewDetails} renderElement={crewImage} ImageContainer={crewElement} type="dots"/>
+        <div className="carousel-container flex flex-col gap-11">
+          <Carousel dataLength={crewDetails.length}>
+            {crewDetails.map((crew, index) => (
+              <Carousel.Details key={index} index={index} classes="flex justify-center h-1/3 mt-[10%] border-b-[1px] border-[rgb(255,255,255,0.2)] ">
+                <Image src={crew.images.png} alt='crew image' height={150} width={150} className="w-auto" />
+              </Carousel.Details>
+            ))}
+
+            <div className="buttons flex justify-center">
+              {crewDetails.map((_, index) => (
+                <Carousel.Button key={index} classes="rounded-full m-2 hover:bg-white" index={index} />
+              ))}
+            </div>
+
+            {crewDetails.map((crew, index) => (
+              <Carousel.Details key={index} index={index}>
+                {crewElement(crew)}
+              </Carousel.Details>
+            ))}
+          </Carousel>
+        </div>
       </div>
     </main>
   );
