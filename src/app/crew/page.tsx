@@ -65,38 +65,38 @@ interface dataListType {
   role: string;
   bio: string;
 }
-export default function Crew() {
+export default function Crew() { 
   const crewElement = (crewDetail: dataListType) => {
     return (
-      <div className="flex justify-between flex-col items-center p-2 h-full">
-        <p className="">{crewDetail.role}</p>
-        <h1 className={`${bellefair.className} uppercase text-5xl py-4 lg:text-8xl`}>{crewDetail.name}</h1>
-        <p className={`${barlow.className} text-center text-sm text-[#D0D6F9] mb-8 lg:text-lg lg:text-justify`}>{crewDetail.bio}</p>
+      <div className="flex justify-between flex-col items-center p-2 h-full lg:h-auto lg:items-start">
+        <p className={`${bellefair.className} uppercase text-sm opacity-60 md:text-base lg:text-lg xl:text-xl`}>{crewDetail.role}</p>
+        <h1 className={`${bellefair.className} uppercase text-xl my-3 md:text-2xl lg:text-3xl xl:text-4xl`}>{crewDetail.name}</h1>
+        <p className={`${barlow.className} text-center text-sm text-[#D0D6F9] mb-8 lg:text-lg xl:text-xl lg:text-justify leading-6 md:text-base md:w-4/5`}>{crewDetail.bio}</p>
       </div>
     )
   }
 
 
   return (
-    <main className="bg-crew-image-mobile lg:bg-crew-image-desktop md:bg-crew-image-tablet bg-cover min-h-screen py-16 px-10">
-      <div className="text-center mt-2 h-full">
-        <p>02 Meet Your Crew</p>
-        <div className="carousel-container flex flex-col gap-11">
-          <Carousel dataLength={crewDetails.length}>
+    <main className="bg-crew-image-mobile lg:bg-crew-image-desktop md:bg-crew-image-tablet bg-cover h-screen py-16 px-10 md:pb-0 md:flex">
+      <div className="text-center mt-2 md:flex md:flex-col">
+      <p className={`${barlow_condensed.className} uppercase md:text-left md:mt-8 text-md md:text-lg lg:text-[28px] tracking-widest md:ml-[5%] lg:ml-[10%] lg:mt-[8%] lg:ml-12`}><span className="text-[#D0D6F9]">02</span>  Meet Your Crew</p>
+        <div className="carousel-container flex flex-col md:flex-col-reverse gap-5 md:flex-1 md:justify-between md:mt-4 lg:flex-row-reverse lg:relative lg:items-end lg:px-12">
+          <Carousel dataLength={crewDetails.length} autoSlide>
             {crewDetails.map((crew, index) => (
-              <Carousel.Details key={index} index={index} classes="flex justify-center h-1/3 mt-[10%] border-b-[1px] border-[rgb(255,255,255,0.2)] ">
-                <Image src={crew.images.png} alt='crew image' height={150} width={150} className="w-auto" />
+              <Carousel.Details key={index} index={index} classes="flex justify-center h-[33vh] md:h-[50vh] mt-[5%] border-b-[1px] border-[rgb(255,255,255,0.2)] md:border-none md:items-end lg:h-[60vh]">
+                <Image src={crew.images.webp} alt='crew image' height={150} width={150} className="object-contain self-end md:h-full md:w-full"/>
               </Carousel.Details>
             ))}
 
-            <div className="buttons flex justify-center">
+            <div className="buttons flex justify-center lg:absolute left-12 bottom-36 lg:gap-5 ">
               {crewDetails.map((_, index) => (
                 <Carousel.Button key={index} classes="rounded-full m-2 hover:bg-white" index={index} />
               ))}
             </div>
 
             {crewDetails.map((crew, index) => (
-              <Carousel.Details key={index} index={index}>
+              <Carousel.Details key={index} index={index} classes="lg:w-1/2 lg:self-center">
                 {crewElement(crew)}
               </Carousel.Details>
             ))}
