@@ -1,4 +1,5 @@
 'use client'
+import UniversalWidth from "@/components/HOC/UniversalWidth";
 import TabsContainer from "@/components/TabsContainer";
 import { Barlow_Condensed, Bellefair, Barlow } from "next/font/google";
 import Image from "next/image";
@@ -69,10 +70,11 @@ interface dataListType {
   distance: string;
   travel: string;
 }
-export default function Destination() {
+const classes = "bg-destination-image-mobile md:bg-destination-image-tablet lg:bg-destination-image-desktop"
+function Destination() {
   const destinationElement = (destinationDetail: dataListType) => {
     return (
-      <div className="md:max-w-md lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl">
+      <div className="md:max-w-md lg:w/2 xl:max-w-2xl 2xl:max-w-3xl">
         <h1 className={`${bellefair.className} uppercase text-5xl mt-4 py-4 lg:text-8xl`}>{destinationDetail.name}</h1>
         <p className={`${barlow.className} text-center text-sm text-[#D0D6F9] mb-8 lg:text-lg lg:text-justify`}>{destinationDetail.description}</p>
         <hr className="w-full bg-[#D0D6F9] opacity-20" />
@@ -92,18 +94,20 @@ export default function Destination() {
 
   const destinationImage = (destinationDetail: dataListType) => {
     return (
-      <div className="w-full m-4 flex justify-center p-4">
-        <Image src={destinationDetail.images.png} alt='destination image' width={150} height={150} className="object-contain w-44 md:w-52 lg:w-96" />
+      <div className="w-full lg:w-auto m-4 flex justify-center p-4 lg:flex-grow lg:justify-start">
+        <Image src={destinationDetail.images.png} alt='destination image' width={150} height={150} className="object-contain w-44 md:w-52 lg:w-4/5" />
       </div>
     )
   }
 
   return (
-    <main className="bg-destination-image-mobile md:bg-destination-image-tablet lg:bg-destination-image-desktop bg-cover min-h-screen py-16 px-10 lg:flex lg:items-center">
+    <main className="lg:flex lg:items-center">
       <div className={`${barlow_condensed.className} container text-center mt-2`}>
-        <p className={`${barlow_condensed.className} uppercase md:text-left md:mt-8 text-md md:text-lg lg:text-[28px] tracking-widest lg:ml-[10%]`}><span className="text-[#D0D6F9]">01</span> Pick your destination</p>
-        <TabsContainer dataList={destinationDetails} renderElement={destinationElement} ImageContainer={destinationImage} />
+        <p className={`${barlow_condensed.className} uppercase md:text-left md:mt-8 text-md md:text-lg lg:text-[28px] tracking-widest`}><span className="text-[#D0D6F9]">01</span> Pick your destination</p>
+        <TabsContainer dataList={destinationDetails} renderElement={destinationElement} ImageContainer={destinationImage} detailsClasses="lg:w-1/2" wrapperClasses="lg:justify-between"/>
       </div>
     </main>
   );
 }
+
+export default UniversalWidth(Destination, classes)

@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-function UniversalWidth() {
+function UniversalWidth(Component: FC, classes?: string) {
   return function(){
     return (
-        <div>
-
+        <div className={`${classes} bg-cover min-h-screen py-16 px-10 lg:p-[8%]`}>
+            <Component/>
         </div>
     )
   }
