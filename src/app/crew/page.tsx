@@ -1,5 +1,6 @@
 'use client'
 import Carousel from "@/components/Carousel";
+import UniversalWidth from "@/components/HOC/UniversalWidth";
 import TabsContainer from "@/components/TabsContainer";
 import { Barlow_Condensed, Bellefair, Barlow } from "next/font/google";
 import Image from "next/image";
@@ -65,7 +66,9 @@ interface dataListType {
   role: string;
   bio: string;
 }
-export default function Crew() { 
+
+const classes = "bg-crew-image-mobile lg:bg-crew-image-desktop md:bg-crew-image-tablet"
+function Crew() { 
   const crewElement = (crewDetail: dataListType) => {
     return (
       <div className="flex justify-between flex-col items-center p-2 h-full lg:h-auto lg:items-start">
@@ -78,18 +81,18 @@ export default function Crew() {
 
 
   return (
-    <main className="bg-crew-image-mobile lg:bg-crew-image-desktop md:bg-crew-image-tablet bg-cover h-screen py-16 px-10 md:pb-0 md:flex">
+    <main className="md:pb-0 md:flex">
       <div className="text-center mt-2 md:flex md:flex-col">
-      <p className={`${barlow_condensed.className} uppercase md:text-left md:mt-8 text-md md:text-lg lg:text-[28px] tracking-widest md:ml-[5%] lg:ml-[10%] lg:mt-[8%] lg:ml-12`}><span className="text-[#D0D6F9]">02</span>  Meet Your Crew</p>
-        <div className="carousel-container flex flex-col md:flex-col-reverse gap-5 md:flex-1 md:justify-between md:mt-4 lg:flex-row-reverse lg:relative lg:items-end lg:px-12">
-          <Carousel dataLength={crewDetails.length} autoSlide>
+      <p className={`${barlow_condensed.className} uppercase md:text-left md:mt-8 text-md md:text-lg lg:text-[28px] tracking-widest md:ml-[8%]`}><span className="text-[#D0D6F9]">02</span>  Meet Your Crew</p>
+        <div className="carousel-container flex flex-col md:flex-col-reverse gap-5 md:flex-1 md:justify-between md:mt-4 lg:mt-0 lg:flex-row-reverse lg:relative lg:items-end lg:justify-end">
+          <Carousel dataLength={crewDetails.length}>
             {crewDetails.map((crew, index) => (
               <Carousel.Details key={index} index={index} classes="flex justify-center h-[33vh] md:h-[50vh] mt-[5%] border-b-[1px] border-[rgb(255,255,255,0.2)] md:border-none md:items-end lg:h-[60vh]">
                 <Image src={crew.images.webp} alt='crew image' height={150} width={150} className="object-contain self-end md:h-full md:w-full"/>
               </Carousel.Details>
             ))}
 
-            <div className="buttons flex justify-center lg:absolute left-12 bottom-36 lg:gap-5 ">
+            <div className="buttons flex justify-center lg:absolute left-0 bottom-[2%] lg:gap-5">
               {crewDetails.map((_, index) => (
                 <Carousel.Button key={index} classes="rounded-full m-2 hover:bg-white" index={index} />
               ))}
@@ -106,3 +109,6 @@ export default function Crew() {
     </main>
   );
 }
+
+
+export default UniversalWidth(Crew, classes)

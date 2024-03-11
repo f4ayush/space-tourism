@@ -1,4 +1,5 @@
 'use client'
+import UniversalWidth from "@/components/HOC/UniversalWidth";
 import TabsContainer from "@/components/TabsContainer";
 import { Barlow_Condensed, Bellefair, Barlow } from "next/font/google";
 import Image from "next/image";
@@ -51,7 +52,9 @@ interface dataListType {
   };
   description: string;
 }
-export default function Technology() {
+
+const classes = "bg-technology-image-mobile md:bg-technology-image-tablet lg:bg-technology-image-desktop lg:px-0"
+function Technology() {
   const technologyElement = (technologyDetail: dataListType) => {
     return (
       <>
@@ -66,7 +69,7 @@ export default function Technology() {
 
   const technologyImage = (technologyDetail: dataListType) => {
     return (
-      <div className="w-full lg:w-1/2 m-4 flex justify-center">
+      <div className="w-full lg:w-1/2 m-4 lg:m-0 flex justify-center">
         <picture className="w-full md:w-full">
         <source srcSet={technologyDetail.images.portrait}
             media="(min-width: 1024px)"/>
@@ -77,11 +80,15 @@ export default function Technology() {
   }
 
   return (
-    <main className="bg-technology-image-mobile md:bg-technology-image-tablet lg:bg-technology-image-desktop bg-cover min-h-screen py-16 lg:flex justify-center lg:items-center">
-      <div className={`${barlow_condensed.className} text-center mt-2 lg:w-full`}>
-        <p className={`${barlow_condensed.className} uppercase md:text-left md:mt-8 text-md md:text-lg lg:text-[28px] tracking-widest md:ml-[5%] lg:ml-[10%]`}><span className="text-[#D0D6F9]">03</span> space launch 101</p>
-        <TabsContainer dataList={technologyDetails} renderElement={technologyElement} ImageContainer={technologyImage} type="circle" wrapperClasses="lg:flex-row-reverse " detailsClasses="lg:flex lg:w-full lg:place-content-center" buttonClasses="lg:flex-col lg:justify-center lg:mr-6"/>
+    // <main className="lg:flex lg:items-center">
+    <main className="lg:flex lg:items-center lg:justify-center">
+      <div className={`${barlow_condensed.className} lg:container text-center mt-2`}>
+      <p className={`${barlow_condensed.className} uppercase md:text-left md:mt-8 text-md md:text-lg lg:text-[28px] tracking-widest md:ml-[2%]`}><span className="text-[#D0D6F9]">03</span> space launch 101</p>
+        <TabsContainer dataList={technologyDetails} renderElement={technologyElement} ImageContainer={technologyImage} type="circle" wrapperClasses="lg:flex-row-reverse " detailsClasses="lg:flex lg:w-full" buttonClasses="lg:flex-col lg:justify-center lg:mr-6"/>
       </div>
     </main>
   );
 }
+
+  
+export default UniversalWidth(Technology, classes)

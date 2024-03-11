@@ -101,9 +101,9 @@ function Destination() {
   }
 
   return (
-    <main className="lg:flex lg:items-center">
+    <main className="md:flex md:items-center md:justify-center">
       <div className={`${barlow_condensed.className} container text-center mt-2`}>
-        <p className={`${barlow_condensed.className} uppercase md:text-left md:mt-8 text-md md:text-lg lg:text-[28px] tracking-widest`}><span className="text-[#D0D6F9]">01</span> Pick your destination</p>
+        <p className={`${barlow_condensed.className} uppercase md:text-left md:mt-8 text-md md:text-lg lg:text-[28px] tracking-widest md:ml-[2%]`}><span className="text-[#D0D6F9]">01</span> Pick your destination</p>
         <TabsContainer dataList={destinationDetails} renderElement={destinationElement} ImageContainer={destinationImage} detailsClasses="lg:w-1/2" wrapperClasses="lg:justify-between"/>
       </div>
     </main>
