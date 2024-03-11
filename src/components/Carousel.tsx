@@ -36,13 +36,13 @@ function Carousel(props:PropsWithChildren<CarouselProps>) {
 }
 
 
-Carousel.Details = ({index, classes ,children}:{index:number; classes?:string; children: React.ReactNode})=>{
+Carousel.Details = function Details({index, classes ,children}:{index:number; classes?:string; children: React.ReactNode}){
   const [activeIndex, setActiveIndex] = useContext(CarouselContext)
   return <div className={`${index === activeIndex? "block" : "hidden"} ${classes ? classes: ""}`}>{children}</div>
 }
 
 
-Carousel.Button = ({classes,index, value}:ButtonPropsType)=>{
+Carousel.Button =function Buttons ({classes,index, value}:ButtonPropsType){
   const [activeIndex, setActiveIndex] = useContext(CarouselContext)
   return <div onClick={() => setActiveIndex(index)} className={`p-2 ${index === activeIndex? "bg-white" : "bg-gray-500"} ${classes}`}>{value}</div>
 }
