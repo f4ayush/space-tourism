@@ -85,7 +85,7 @@ function Crew() {
       <div className="text-center mt-2 md:flex md:flex-col">
       <p className={`${barlow_condensed.className} uppercase md:text-left md:mt-8 text-md md:text-lg lg:text-[28px] tracking-widest md:ml-[8%]`}><span className="text-[#D0D6F9]">02</span>  Meet Your Crew</p>
         <div className="carousel-container flex flex-col md:flex-col-reverse gap-5 md:flex-1 md:justify-between md:mt-4 lg:mt-0 lg:flex-row-reverse lg:relative lg:items-end lg:justify-end">
-          <Carousel dataLength={crewDetails.length}>
+          <Carousel dataLength={crewDetails.length} autoSlide>
             {crewDetails.map((crew, index) => (
               <Carousel.Details key={index} index={index} classes="flex justify-center h-[33vh] md:h-[50vh] mt-[5%] border-b-[1px] border-[rgb(255,255,255,0.2)] md:border-none md:items-end lg:h-[60vh]">
                 <Image src={crew.images.webp} alt='crew image' height={150} width={150} className="object-contain self-end md:h-full md:w-full"/>
